@@ -5,4 +5,16 @@ class MathSet
     @elements = e;
   end
 
+  def +(e)
+    if e.is_a? MathSet
+      e.elements.each do |elem|
+        @elements << elem unless @elements.include?(elem)
+      end
+      self
+    else
+      @elements << e;
+      self
+    end
+  end
+
 end

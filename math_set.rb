@@ -1,0 +1,2 @@
+class MathSet
+end

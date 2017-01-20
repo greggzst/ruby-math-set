@@ -31,4 +31,13 @@ class MathSet
     end
   end
 
+  def *(set)
+    if set.is_a? MathSet
+      @elements.select!{ |elem| set.elements.include?(elem)}
+      self
+    else
+      raise ArgumentError ,'Argument is not a set!'    
+    end
+  end
+
 end

@@ -76,4 +76,29 @@ describe MathSet do
 
     end
   end
+
+  describe '#*' do
+    before(:each) do
+      @num = [1,2,3,4,5,6]
+      @set1 = MathSet.new(@num[1],@num[3],@num[2],@num[5])
+      @set2 = MathSet.new(@num[1],@num[0],@num[5],@num[2],@num[4])
+    end
+
+    describe 'sets' do
+      it 'returns intersection of two sets' do
+        set = @set1 * @set2
+        expect(set.elements).to include(@num[1])
+        expect(set.elements).to include(@num[5])
+        expect(set.elements).to include(@num[2])
+        expect(set.elements.length).to eq 3
+      end
+    end
+
+    describe 'sth different' do
+      it 'raises ArgumentError' do
+         expect{ @set1 * ""}.to raise_error('Argument is not a set!')
+      end
+    end
+  end
+
 end

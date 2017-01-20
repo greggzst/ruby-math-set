@@ -12,7 +12,7 @@ class MathSet
       end
       self
     else
-      @elements << e;
+      @elements << e unless @elements.include?(e);
       self
     end
   end

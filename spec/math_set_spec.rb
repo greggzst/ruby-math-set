@@ -2,6 +2,21 @@ require_relative '../math_set'
 
 describe MathSet do
   
+  describe '#count' do
+    before(:all) do
+      @set1 = MathSet.new
+      @set2 = MathSet.new(1,2,3,3)
+    end
+
+    it 'returns 0 when empty set' do
+      expect(@set1.count).to eq 0
+    end
+
+    it 'returns set size' do
+      expect(@set2.count).to eq 3
+    end
+  end
+
   describe '#+' do
     
     before(:each) do
@@ -29,7 +44,7 @@ describe MathSet do
       set = MathSet.new(num1,num2)
       set = set + @set2
       expect(set.elements).to include(num2)
-      expect(set.elements.size).to eq 3
+      expect(set.count).to eq 3
     end
 
   end
@@ -90,7 +105,7 @@ describe MathSet do
         expect(set.elements).to include(@num[1])
         expect(set.elements).to include(@num[5])
         expect(set.elements).to include(@num[2])
-        expect(set.elements.length).to eq 3
+        expect(set.count).to eq 3
       end
     end
 

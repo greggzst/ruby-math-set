@@ -5,6 +5,10 @@ class MathSet
     @elements = e.uniq;
   end
 
+  def count
+    @elements.length
+  end
+
   def +(e)
     if e.is_a? MathSet
       e.elements.each do |elem|

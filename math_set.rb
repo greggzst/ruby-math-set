@@ -1,5 +1,5 @@
 class MathSet
-  attr_reader :elements
+  attr_accessor :elements
 
   def initialize(*e)
     @elements = e.uniq;
@@ -23,8 +23,9 @@ class MathSet
 
   def -(e)
     if e.is_a? MathSet
-      @elements.reject! { |elem| e.elements.include?(elem)}
-      self
+      new_set = MathSet.new
+      new_set.elements = @elements.reject { |elem| e.elements.include?(elem)}
+      new_set
     else
       if @elements.include?(e)
         @elements.delete(e)
@@ -37,8 +38,9 @@ class MathSet
 
   def *(set)
     if set.is_a? MathSet
-      @elements.select!{ |elem| set.elements.include?(elem)}
-      self
+      new_set = MathSet.new
+      new_set.elements = @elements.select{ |elem| set.elements.include?(elem)}
+      new_set
     else
       raise ArgumentError ,'Argument is not a set!'    
     end

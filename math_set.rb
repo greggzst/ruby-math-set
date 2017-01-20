@@ -17,4 +17,18 @@ class MathSet
     end
   end
 
+  def -(e)
+    if e.is_a? MathSet
+      @elements.reject! { |elem| e.elements.include?(elem)}
+      self
+    else
+      if @elements.include?(e)
+        @elements.delete(e)
+        self
+      else
+        raise 'Element does not exist in this set!'
+      end
+    end
+  end
+
 end

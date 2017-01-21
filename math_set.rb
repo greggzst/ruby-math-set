@@ -46,6 +46,25 @@ class MathSet
     end
   end
 
+  def is_subset?(set)
+    if set.is_a? MathSet
+
+      if count > set.count
+        return false
+      end
+
+      i = 0
+      elements.length.times do
+        return false unless set.elements.include?(elements[i])
+        i = i + 1
+      end
+
+      return true
+    else
+      raise ArgumentError ,'Argument is not a set!' 
+    end
+  end
+
   protected
     attr_writer :elements
 

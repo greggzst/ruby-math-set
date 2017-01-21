@@ -116,4 +116,38 @@ describe MathSet do
     end
   end
 
+  describe '#is_subset?' do
+    
+    before(:all) do
+      @num = [1,2,3,4,5]
+      @set1 = MathSet.new(@num[0],@num[2],@num[3])
+      @set2 = MathSet.new(@num[0],@num[1],@num[4])
+      @set3 = MathSet.new(@num[0],@num[2])
+    end
+
+    describe 'sets' do
+      it 'returns true if set is a subset' do
+        expect(@set3.is_subset?(@set1)).to be true
+      end
+
+      it 'returns true if the argument is set itself' do
+        expect(@set2.is_subset?(@set2)).to be true
+      end
+
+      it 'returns false if set is not a subset' do
+        expect(@set1.is_subset?(@set2)).to be false
+      end
+
+      it 'returns false if assumed subset length is greater' do
+        expect(@set1.is_subset?(@set3)).to be false
+      end
+    end
+
+    describe 'sth else' do
+      it 'raises ArgumentError' do
+        expect{@set3.is_subset?("")}.to raise_error('Argument is not a set!') 
+      end
+    end
+  end
+
 end

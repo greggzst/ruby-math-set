@@ -1,5 +1,5 @@
 class MathSet
-  attr_accessor :elements
+  attr_reader :elements
 
   def initialize(*e)
     @elements = e.uniq;
@@ -45,5 +45,8 @@ class MathSet
       raise ArgumentError ,'Argument is not a set!'    
     end
   end
+
+  protected
+    attr_writer :elements
 
 end
